@@ -4,10 +4,10 @@ import EmailProvider from "next-auth/providers/email";
 import { prisma } from "../database";
  
 export const { 
-  auth, 
-  handlers, 
-  signIn, 
-  signOut 
+  auth,
+  handlers: { GET, POST },
+  signIn,
+  signOut
   } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -16,4 +16,9 @@ export const {
       from: process.env.EMAIL_FROM,
     }),
   ],
+  pages: {
+    signIn: "/auth"
+  },
+  session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
 })

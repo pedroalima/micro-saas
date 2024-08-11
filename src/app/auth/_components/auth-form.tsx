@@ -1,8 +1,8 @@
 "use client"
-
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { signIn } from "next-auth/react"
 import Link from "next/link"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -12,10 +12,10 @@ export function AuthForm() {
   const [ submitted, setSubmitted ] = useState(false)
   const [ email, setEmail ] = useState("")
 
-  const handleSubmit = form.handleSubmit((data) => {
+  const handleSubmit = form.handleSubmit(async (data) => {
     console.log(data)
-    setEmail(data.email)
-    setSubmitted(true)
+
+    await signIn("email", { email: data.email })
   })
 
   return (
