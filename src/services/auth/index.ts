@@ -17,7 +17,11 @@ export const {
     }),
   ],
   pages: {
-    signIn: "/auth"
+    signIn: "/auth",
+    signOut: "/auth",
+    error: "/auth",
+    verifyRequest: "/auth",
+    newUser: "/app"
   },
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
