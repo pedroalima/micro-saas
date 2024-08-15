@@ -1,20 +1,20 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
+import { getUrl } from './lib/get-url'
  
-// This function can be marked `async` if using `await` inside
-export default function middleware(request: NextRequest) {
-  const token = request.cookies.get('')
+export function middleware(request: NextRequest) {
+  const token = request.cookies.get('authjs.session-token')
   const pathname = request.nextUrl.pathname
 
-//   console.log({
-//     token: token?.value,
-//     pathname,
-//   })
+  if (pathname === '/auth' && token) {
+    return NextResponse.redirect(new URL(getUrl('/app')))
+  }
 
-  return NextResponse.redirect(new URL('/auth', request.url))
+  if (pathname.includes('/app') && !token) {
+    return NextResponse.redirect(new URL(getUrl('/auth')))
+  }
 }
  
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/app:path*'],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 }
