@@ -1,6 +1,6 @@
 import { AuthForm } from "./_components/auth-form";
 
-export default function Page() {
+export default async function Page() {
   return (
     <AuthForm />
   )

@@ -23,6 +23,5 @@ export const {
     verifyRequest: "/auth",
     newUser: "/app"
   },
-  session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
 })
