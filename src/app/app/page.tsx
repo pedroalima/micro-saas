@@ -1,3 +1,4 @@
+import { DashboardPage } from "@/components/dashboard"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,7 +15,7 @@ export default async function Page() {
   const session = await auth()
 
   return (
-      <div className="flex min-h-screen w-full flex-col bg-muted/40">
+      <DashboardPage>
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
           <h1 className="text-xl font-bold">Todo Dashboard</h1>
         </header>
@@ -246,6 +247,6 @@ export default async function Page() {
             </Card>
           </main>
         </div>
-      </div>
+      </DashboardPage>
   )
 }
