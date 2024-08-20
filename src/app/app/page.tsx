@@ -16,8 +16,11 @@ export default async function Page() {
 
   return (
       <DashboardPage>
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-          <h1 className="text-xl font-bold">Todo Dashboard</h1>
+        <header className="sticky top-0 z-30 flex justify-between h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 sm:pl-14 pt-8 pb-4">
+          <h1 className="text-xl font-bold px-6">Todo Dashboard</h1>
+          <div className="flex justify-around items-center gap-4">
+            <UserInfo user={session?.user} />
+          </div>
         </header>
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
           <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -58,7 +61,6 @@ export default async function Page() {
                   <TooltipContent side="right">Settings</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              <UserInfo user={session?.user} />
             </nav>
           </aside>
           <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
