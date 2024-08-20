@@ -1,14 +1,12 @@
-import { DashboardPage } from "@/components/dashboard"
+import { DashboardAside, DashboardNav, DashboardPage, DashboardTooltip } from "@/components/dashboard"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { auth } from "@/services/auth"
-import Link from "next/link"
-import { CiBoxList, CiCalendar, CiCirclePlus, CiFilter, CiSettings, CiViewList } from "react-icons/ci"
+import { CiCirclePlus, CiFilter, CiViewList } from "react-icons/ci"
 import { UserInfo } from "./_components/user-info"
 
 export default async function Page() {
@@ -23,46 +21,11 @@ export default async function Page() {
           </div>
         </header>
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-          <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-            <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
-              <TooltipProvider>
-                <Link
-                  href="#"
-                  className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
-                  prefetch={false}
-                >
-                  <CiBoxList className="h-4 w-4 transition-all group-hover:scale-110" />
-                  <span className="sr-only">Todos</span>
-                </Link>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="#"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                      prefetch={false}
-                    >
-                      <CiCalendar className="h-5 w-5" />
-                      <span className="sr-only">Calendar</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Calendar</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href="#"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-                      prefetch={false}
-                    >
-                      <CiSettings className="h-5 w-5" />
-                      <span className="sr-only">Settings</span>
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent side="right">Settings</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </nav>
-          </aside>
+          <DashboardAside>
+            <DashboardNav>
+              <DashboardTooltip />
+            </DashboardNav>
+          </DashboardAside>
           <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
             <Card>
               <CardHeader>
