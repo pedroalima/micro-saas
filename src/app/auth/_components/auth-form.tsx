@@ -20,6 +20,8 @@ export function AuthForm() {
         title: "Magic Link Sent",
         description: "Check your email for the magic link to login."
       })
+      setEmail(data.email)
+      setSubmitted(true)
     } catch (error) {
       toast({
         title: "Error",
@@ -52,8 +54,8 @@ export function AuthForm() {
                 {... form.register("email")}
               />
             </div>
-            <Button type="submit" className="w-full">
-              Send magic link
+            <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Sending..." : "Send magic link"}
             </Button>
           </form>
         ) : (
