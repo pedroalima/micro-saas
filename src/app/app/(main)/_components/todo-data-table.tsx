@@ -108,9 +108,19 @@ export const columns: ColumnDef<Todo>[] = [
   },
   {
     accessorKey: "createdAt",
-    header: () => <div className="text-right">CreatedAt</div>,
+    header: ({ column }) => {
+      return (
+        <Button 
+          variant="ghost" 
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          CreatedAt
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
-      return <div className="text-right font-medium">{row.original.createdAt.toLocaleDateString()}</div>
+      return <div className="text-left font-medium">{row.original.createdAt.toLocaleDateString()}</div>
     },
   },
   {
@@ -251,7 +261,7 @@ export function TodoDataTable() {
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-24 text-right"
                 >
                   No results.
                 </TableCell>
