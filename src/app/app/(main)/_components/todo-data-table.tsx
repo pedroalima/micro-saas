@@ -32,14 +32,7 @@ import {
 } from "@tanstack/react-table"
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import * as React from "react"
-
-export type Todo = {
-  id: string
-  title: string,
-  createdAt: Date,
-  updatedAt: Date,
-  finishedAt?: Date
-}
+import { Todo } from "../types"
 
 const data: Todo[] = [
   {

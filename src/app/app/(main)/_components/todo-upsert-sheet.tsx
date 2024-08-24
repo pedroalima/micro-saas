@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sheet"
 import { useRef } from "react"
 import { useForm } from "react-hook-form"
-import { Todo } from "./todo-data-table"
+import { Todo } from "../types"
 
 type TodoUpsertSheetProps = {
     children: React.ReactNode,
@@ -25,7 +25,12 @@ type TodoUpsertSheetProps = {
 export function TodoUpsertSheet({ children }: TodoUpsertSheetProps) {
   const ref = useRef<HTMLDivElement>(null)
 
-  const form = useForm()
+  const form = useForm<Todo>({
+    defaultValues: {
+        title: ""
+    }
+  })
+
   const onSubmit = form.handleSubmit((data) => {
     console.log(data)
   })
